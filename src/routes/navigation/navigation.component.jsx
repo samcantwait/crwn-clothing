@@ -6,18 +6,21 @@ import './navigation.styles.scss';
 const Navigation = () => {
     return (
         <Fragment>
-            <div className="navigation">
-                <Link className="logo-container" to='/'>
+            <nav className="navigation" role="navigation">
+                <Link className="logo-container" to='/' aria-label="go to homepage">
                     <div>
-                        <CrwnLogo className="logo" />
+                        <CrwnLogo className="logo" aria-label="website logo" />
                     </div>
                 </Link>
                 <div className="nav-links-container">
-                    <Link className="nav-link" to='/shop'>
+                    <Link className="nav-link" to='/shop' aria-label="go to shop page">
                         SHOP
                     </Link>
+                    <Link className="nav-link" to='/sign-in' aria-label="go to sign-in page">
+                        SIGN IN
+                    </Link>
                 </div>
-            </div>
+            </nav>
             <Outlet />
         </Fragment>
     )
