@@ -11,6 +11,7 @@ import {
     getDoc,
     setDoc
 } from 'firebase/firestore'
+import { useSearchParams } from 'react-router-dom';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBL3JRaLnOVEw5ABmILQEMEGTiv0Ahly8g",
@@ -39,6 +40,22 @@ export const createUserDocumentFromAuth = async (userAuth) => {
     console.log(userDocRef);
 
     const userSnapShot = await getDoc(userDocRef);
-    console.log(userSnapShot);
-    console.log(userSnapShot.exists());
+
+    if (!userSnapShot.exists()) {
+        const { displayName, email } = userAuth;
+        const createdAt = new Date();
+
+        // if userSnapShot does not exist
+        try {
+            await setDoc(userDocRef, {
+                displayName,
+                email,
+                createdAt
+            });
+        } catch (error) {
+            console.log('error creating the user ', error.message);
+        }
+    }
+
+    return userDocRef;
 }
