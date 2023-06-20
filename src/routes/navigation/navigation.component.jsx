@@ -16,7 +16,7 @@ const Navigation = () => {
                     <Link className="nav-link" to='/shop' aria-label="go to shop page">
                         SHOP
                     </Link>
-                    <Link className="nav-link" to='/sign-in' aria-label="go to sign-in page">
+                    <Link className="nav-link" to='/auth' aria-label="go to sign-in page">
                         SIGN IN
                     </Link>
                 </div>
